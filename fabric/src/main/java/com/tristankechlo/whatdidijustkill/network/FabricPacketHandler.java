@@ -1,5 +1,6 @@
 package com.tristankechlo.whatdidijustkill.network;
 
+import com.google.auto.service.AutoService;
 import com.tristankechlo.whatdidijustkill.WhatDidIJustKill;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -9,6 +10,7 @@ import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 
+@AutoService(IPacketHandler.class)
 public class FabricPacketHandler implements IPacketHandler {
 
     @Override

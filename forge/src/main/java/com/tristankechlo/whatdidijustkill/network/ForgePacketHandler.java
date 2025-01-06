@@ -1,5 +1,6 @@
 package com.tristankechlo.whatdidijustkill.network;
 
+import com.google.auto.service.AutoService;
 import com.tristankechlo.whatdidijustkill.WhatDidIJustKill;
 import net.minecraft.network.Connection;
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +14,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 import java.util.function.Supplier;
 
+@AutoService(IPacketHandler.class)
 public class ForgePacketHandler implements IPacketHandler {
 
 

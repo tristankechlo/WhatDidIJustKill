@@ -2,15 +2,13 @@ modLoader = "javafml"
 loaderVersion = "${forge_loader_range}"
 license = "CC BY-NC-ND 4.0"
 issueTrackerURL="https://github.com/tristankechlo/WhatDidIJustKill/issues"
-#showAsResourcePack=false
 
 [[mods]]
 modId = "whatdidijustkill"
 version = "${version}"
 displayName = "What Did I Just Kill?"
 displayURL="https://github.com/tristankechlo/WhatDidIJustKill"
-#logoFile= "banner.png"
-#credits = "Thanks for this example mod goes to Java"
+logoFile= "pack.png"
 authors = "Buecher_wurm"
 description = '''displays a small toast with information about the mob you just killed'''
 

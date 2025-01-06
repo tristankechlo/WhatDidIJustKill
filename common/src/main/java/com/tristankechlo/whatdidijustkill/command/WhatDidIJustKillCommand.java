@@ -19,7 +19,6 @@ public class WhatDidIJustKillCommand {
         LiteralArgumentBuilder<CommandSourceStack> command = literal(WhatDidIJustKill.MOD_ID)
                 .then(literal("config")
                         .then(literal("reload").executes(WhatDidIJustKillCommand::configReload))
-                        .then(literal("show").executes(WhatDidIJustKillCommand::configShow))
                         .then(literal("reset").executes(WhatDidIJustKillCommand::configReset)))
                 .then(literal("github").executes(WhatDidIJustKillCommand::github))
                 .then(literal("issue").executes(WhatDidIJustKillCommand::issue))
@@ -35,12 +34,6 @@ public class WhatDidIJustKillCommand {
         CommandSourceStack source = context.getSource();
         boolean success = ConfigManager.reloadConfig();
         ResponseHelper.sendMessageConfigReload(source, success);
-        return 1;
-    }
-
-    private static int configShow(CommandContext<CommandSourceStack> context) {
-        CommandSourceStack source = context.getSource();
-        ResponseHelper.sendMessageConfigShow(source);
         return 1;
     }
 

@@ -12,12 +12,6 @@ import net.minecraft.network.chat.TextComponent;
 
 public final class ResponseHelper {
 
-    public static void sendMessageConfigShow(CommandSourceStack source) {
-        MutableComponent clickableFile = clickableConfig();
-        MutableComponent message = new TextComponent("Config-file can be found here: ").append(clickableFile);
-        sendMessage(source, message.withStyle(ChatFormatting.WHITE), false);
-    }
-
     public static void sendMessageConfigReload(CommandSourceStack source, boolean success) {
         String text = success ? "Config was successfully reloaded." : "Error while reloading config. Check the logs for further details.";
         MutableComponent message = new TextComponent(text).withStyle(ChatFormatting.WHITE);
@@ -37,15 +31,6 @@ public final class ResponseHelper {
     public static void sendMessage(CommandSourceStack source, Component message, boolean broadcastToOps) {
         MutableComponent start = start().append(message);
         source.sendSuccess(start, broadcastToOps);
-    }
-
-    public static MutableComponent clickableConfig() {
-        String fileName = ConfigManager.FILE_NAME;
-        String filePath = ConfigManager.getConfigPath();
-        MutableComponent mutableComponent = new TextComponent(fileName);
-        mutableComponent.withStyle(ChatFormatting.GREEN, ChatFormatting.UNDERLINE);
-        mutableComponent.withStyle(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, filePath)));
-        return mutableComponent;
     }
 
     public static MutableComponent clickableLink(String url, String displayText) {

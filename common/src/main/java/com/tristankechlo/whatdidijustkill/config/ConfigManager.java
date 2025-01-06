@@ -19,7 +19,7 @@ public final class ConfigManager {
 
     private static final File CONFIG_DIR = IPlatformHelper.INSTANCE.getConfigDirectory().toFile();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
-    public static final String FILE_NAME = WhatDidIJustKill.MOD_ID + ".json";
+    private static final String FILE_NAME = WhatDidIJustKill.MOD_ID + ".json";
     private static final File CONFIG_FILE = new File(CONFIG_DIR, FILE_NAME);
 
     public static boolean loadAndVerifyConfig() {
@@ -98,10 +98,6 @@ public final class ConfigManager {
             WhatDidIJustKill.LOGGER.error(e.getMessage());
         }
         return false;
-    }
-
-    public static String getConfigPath() {
-        return CONFIG_FILE.getAbsolutePath();
     }
 
     private static void createConfigFolder() {

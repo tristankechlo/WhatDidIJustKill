@@ -1,6 +1,7 @@
 # Credits
 
 ## Entity Icons
+
 Most entity icons are from the [minecraft.wiki](https://minecraft.wiki).  
 Icons of mobs that were looking to the right have been mirrored to look to the left.  
 

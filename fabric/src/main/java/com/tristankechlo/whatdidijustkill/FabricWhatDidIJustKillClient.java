@@ -23,7 +23,7 @@ public class FabricWhatDidIJustKillClient implements ClientModInitializer {
         ConfigManager.loadAndVerifyConfig();
 
         // register keybindings and listener
-        KEYMAPPING = KeyBindingHelper.registerKeyBinding(new KeyMapping("key.whatdidijustkill.toggle_toasts", GLFW.GLFW_KEY_V, "key.categories.ui"));
+        KEYMAPPING = KeyBindingHelper.registerKeyBinding(new KeyMapping("key.whatdidijustkill.toggle_toasts", GLFW.GLFW_KEY_V, "key.categories.wdijk"));
         ClientTickEvents.END_CLIENT_TICK.register(FabricWhatDidIJustKillClient::keyBindingListener);
 
         // register packet listener

@@ -1,5 +1,10 @@
 # Changelog
 
+### Version 1.19.3 - 1.1.4
+
+- remove command option to open the config file
+- add translation `zh_cn` by NumberSir [https://github.com/NumberSir](https://github.com/NumberSir)
+
 ### Version 1.19.3 - 1.1.2
 
 - add proper icon for fabric mod menu

@@ -4,7 +4,7 @@ import java.nio.file.Path;
 
 public interface IPlatformHelper {
 
-    public static final IPlatformHelper INSTANCE = WhatDidIJustKill.load(IPlatformHelper.class);
+    IPlatformHelper INSTANCE = WhatDidIJustKill.load(IPlatformHelper.class);
 
     Path getConfigDirectory();
 

@@ -18,7 +18,6 @@ public class FabricWhatDidIJustKillCommand {
         LiteralArgumentBuilder<FabricClientCommandSource> command = literal(WhatDidIJustKill.MOD_ID)
                 .then(literal("config")
                         .then(literal("reload").executes(FabricWhatDidIJustKillCommand::configReload))
-                        .then(literal("show").executes(FabricWhatDidIJustKillCommand::configShow))
                         .then(literal("reset").executes(FabricWhatDidIJustKillCommand::configReset)))
                 .then(literal("github").executes(FabricWhatDidIJustKillCommand::github))
                 .then(literal("issue").executes(FabricWhatDidIJustKillCommand::issue))
@@ -37,12 +36,6 @@ public class FabricWhatDidIJustKillCommand {
         return 1;
     }
 
-    private static int configShow(CommandContext<FabricClientCommandSource> context) {
-        FabricClientCommandSource source = context.getSource();
-        FabricResponseHelper.sendMessageConfigShow(source);
-        return 1;
-    }
-
     private static int configReset(CommandContext<FabricClientCommandSource> context) {
         FabricClientCommandSource source = context.getSource();
         boolean success = ConfigManager.resetConfig();
@@ -54,7 +47,7 @@ public class FabricWhatDidIJustKillCommand {
         FabricClientCommandSource source = context.getSource();
         Component link = FabricResponseHelper.clickableLink(WhatDidIJustKill.GITHUB_URL);
         Component message = Component.literal("Check out the source code on GitHub: ").withStyle(ChatFormatting.WHITE).append(link);
-        FabricResponseHelper.sendMessage(source, message, false);
+        FabricResponseHelper.sendMessage(source, message);
         return 1;
     }
 
@@ -62,7 +55,7 @@ public class FabricWhatDidIJustKillCommand {
         FabricClientCommandSource source = context.getSource();
         Component link = FabricResponseHelper.clickableLink(WhatDidIJustKill.GITHUB_ISSUE_URL);
         Component message = Component.literal("If you found an issue, submit it here: ").withStyle(ChatFormatting.WHITE).append(link);
-        FabricResponseHelper.sendMessage(source, message, false);
+        FabricResponseHelper.sendMessage(source, message);
         return 1;
     }
 
@@ -70,7 +63,7 @@ public class FabricWhatDidIJustKillCommand {
         FabricClientCommandSource source = context.getSource();
         Component link = FabricResponseHelper.clickableLink(WhatDidIJustKill.GITHUB_WIKI_URL);
         Component message = Component.literal("The wiki can be found here: ").withStyle(ChatFormatting.WHITE).append(link);
-        FabricResponseHelper.sendMessage(source, message, false);
+        FabricResponseHelper.sendMessage(source, message);
         return 1;
     }
 
@@ -78,7 +71,7 @@ public class FabricWhatDidIJustKillCommand {
         FabricClientCommandSource source = context.getSource();
         Component link = FabricResponseHelper.clickableLink(WhatDidIJustKill.DISCORD_URL);
         Component message = Component.literal("Join the Discord here: ").withStyle(ChatFormatting.WHITE).append(link);
-        FabricResponseHelper.sendMessage(source, message, false);
+        FabricResponseHelper.sendMessage(source, message);
         return 1;
     }
 
@@ -86,7 +79,7 @@ public class FabricWhatDidIJustKillCommand {
         FabricClientCommandSource source = context.getSource();
         Component link = FabricResponseHelper.clickableLink(WhatDidIJustKill.CURSEFORGE_URL);
         Component message = Component.literal("Check out the CurseForge page here: ").withStyle(ChatFormatting.WHITE).append(link);
-        FabricResponseHelper.sendMessage(source, message, false);
+        FabricResponseHelper.sendMessage(source, message);
         return 1;
     }
 
@@ -94,7 +87,7 @@ public class FabricWhatDidIJustKillCommand {
         FabricClientCommandSource source = context.getSource();
         Component link = FabricResponseHelper.clickableLink(WhatDidIJustKill.MODRINTH_URL);
         Component message = Component.literal("Check out the Modrinth page here: ").withStyle(ChatFormatting.WHITE).append(link);
-        FabricResponseHelper.sendMessage(source, message, false);
+        FabricResponseHelper.sendMessage(source, message);
         return 1;
     }
 

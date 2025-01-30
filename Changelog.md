@@ -1,7 +1,8 @@
 # Changelog
 
-### Version 1.20.4 - 1.1.4
+### Version 1.20.1 - 1.1.4
 
+- backport to 1.20.1
 - remove command option to open the config file
 - add translation `zh_cn` by NumberSir [GitHub](https://github.com/NumberSir)
 

@@ -7,7 +7,6 @@ import net.minecraft.resources.ResourceLocation;
 
 public record ClientBoundEntityKilledPacket(Component entityName, ResourceLocation entityType, double distance, boolean hasSpecialName) {
 
-    /* decode for forge and fabric */
     public static void encode(ClientBoundEntityKilledPacket packet, FriendlyByteBuf buffer) {
         buffer.writeComponent(packet.entityName());
         buffer.writeResourceLocation(packet.entityType());
@@ -15,7 +14,6 @@ public record ClientBoundEntityKilledPacket(Component entityName, ResourceLocati
         buffer.writeBoolean(packet.hasSpecialName());
     }
 
-    /* encode for forge and fabric */
     public static ClientBoundEntityKilledPacket decode(FriendlyByteBuf buffer) {
         Component entityName = buffer.readComponent();
         ResourceLocation entityType = buffer.readResourceLocation();
@@ -24,7 +22,6 @@ public record ClientBoundEntityKilledPacket(Component entityName, ResourceLocati
         return new ClientBoundEntityKilledPacket(entityName, entityType, distance, hasCustomName);
     }
 
-    /* handle the packet; forge, fabric and neoforge */
     public static void handle(ClientBoundEntityKilledPacket packet) {
         ToastHandler.showToastEntity(packet.entityName, packet.entityType, packet.distance, packet.hasSpecialName);
     }

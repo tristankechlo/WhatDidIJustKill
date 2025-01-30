@@ -24,7 +24,7 @@ public class EntityKilledToast extends AbstractEntityToast {
         super(firstLine, secondLine);
         this.entityTexture = getTextureLocationSafe(entityType);
         this.displayTime = WhatDidIJustKillConfig.get().entity().timeout();
-        this.backgroundTexture = WhatDidIJustKillConfig.get().entity().theme().getBackgroundTexture();
+        this.backgroundTextureOffsetY = WhatDidIJustKillConfig.get().entity().theme().getOffsetY();
         this.textShadow = WhatDidIJustKillConfig.get().entity().theme() == ToastTheme.ADVANCEMENT;
     }
 

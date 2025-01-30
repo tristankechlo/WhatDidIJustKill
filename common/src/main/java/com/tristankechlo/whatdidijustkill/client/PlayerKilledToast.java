@@ -27,7 +27,7 @@ public class PlayerKilledToast extends AbstractEntityToast {
         super(firstLine, secondLine);
         this.playerTexture = texture;
         this.displayTime = WhatDidIJustKillConfig.get().player().timeout();
-        this.backgroundTexture = WhatDidIJustKillConfig.get().player().theme().getBackgroundTexture();
+        this.backgroundTextureOffsetY = WhatDidIJustKillConfig.get().player().theme().getOffsetY();
         this.textShadow = WhatDidIJustKillConfig.get().player().theme() == ToastTheme.ADVANCEMENT;
     }
 
@@ -68,7 +68,7 @@ public class PlayerKilledToast extends AbstractEntityToast {
         }
         Player player = level.getPlayerByUUID(uuid);
         if (player instanceof AbstractClientPlayer p) {
-            return p.getSkin().texture();
+            return p.getSkinTextureLocation();
         }
         return UNKNOWN_PLAYER;
     }

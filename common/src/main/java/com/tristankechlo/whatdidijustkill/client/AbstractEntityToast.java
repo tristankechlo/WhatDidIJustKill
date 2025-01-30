@@ -5,14 +5,13 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastComponent;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 
 public abstract class AbstractEntityToast implements Toast {
 
     private final Component firstLine; // not null
     private final Component secondLine; // might be null
-    protected ResourceLocation backgroundTexture = ToastTheme.ADVANCEMENT.getBackgroundTexture();
     protected int displayTime = 2000;
+    protected int backgroundTextureOffsetY = ToastTheme.ADVANCEMENT.getOffsetY();
     protected boolean textShadow = true;
 
     protected AbstractEntityToast(Component firstLine, Component secondLine) {
@@ -27,7 +26,7 @@ public abstract class AbstractEntityToast implements Toast {
         }
 
         // render background texture
-        graphics.blitSprite(this.backgroundTexture, 0, 0, this.width(), this.height());
+        graphics.blit(TEXTURE, 0, 0, 0, this.backgroundTextureOffsetY, this.width(), this.height(), 256, 256);
 
         // draw entity texture
         this.renderEntityImage(graphics);

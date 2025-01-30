@@ -1,6 +1,6 @@
 plugins {
     id 'idea'
-    id 'net.neoforged.gradle.userdev' version '7.0.81'
+    id 'net.neoforged.gradle.userdev' version '7.0.180'
     id 'java-library'
 }
 
@@ -10,14 +10,13 @@ base {
 }
 
 runs {
-    configureEach {
-        modSource project.sourceSets.main
-    }
     client {
-        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        modSource project.sourceSets.main
+        workingDirectory file('runs')
     }
     server {
-        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        modSource project.sourceSets.main
+        workingDirectory file('runs')
         programArgument '--nogui'
     }
 }
@@ -25,6 +24,9 @@ runs {
 dependencies {
     implementation "net.neoforged:neoforge:${neoforge_version}"
     compileOnly project(":common")
+
+    compileOnly group: 'com.google.auto.service', name: 'auto-service', version: auto_service_version
+    annotationProcessor group: 'com.google.auto.service', name: 'auto-service', version: auto_service_version
 }
 
 // NeoGradle compiles the game, but we don't want to add our common code to the game's code

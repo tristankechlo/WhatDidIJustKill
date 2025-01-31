@@ -1,14 +1,16 @@
 plugins {
     id 'wdijk-loader'
-    id 'net.neoforged.gradle.userdev' version '7.0.171'
+    id 'net.neoforged.gradle.userdev' version '7.0.180'
 }
 
 runs {
     client {
+        workingDirectory file('runs')
         modSource project.sourceSets.main
         systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
     }
     server {
+        workingDirectory file('runs')
         modSource project.sourceSets.main
         systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         programArgument '--nogui'

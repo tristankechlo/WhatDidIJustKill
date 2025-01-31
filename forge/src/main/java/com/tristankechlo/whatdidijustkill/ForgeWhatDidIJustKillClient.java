@@ -17,7 +17,7 @@ import org.lwjgl.glfw.GLFW;
 @Mod.EventBusSubscriber(modid = WhatDidIJustKill.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ForgeWhatDidIJustKillClient {
 
-    public static final Lazy<KeyMapping> KEYMAPPING = Lazy.of(() -> new KeyMapping("key.whatdidijustkill.toggle_toasts", GLFW.GLFW_KEY_V, "key.categories.ui"));
+    public static final Lazy<KeyMapping> KEYMAPPING = Lazy.of(() -> new KeyMapping("key.whatdidijustkill.toggle_toasts", GLFW.GLFW_KEY_V, "key.categories.wdijk"));
 
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
@@ -33,11 +33,9 @@ public class ForgeWhatDidIJustKillClient {
     private static class ClientTick {
 
         @SubscribeEvent
-        public static void onClientTick(TickEvent.ClientTickEvent event) {
-            if (event.phase == TickEvent.Phase.END) {
-                while (KEYMAPPING.get().consumeClick() && Screen.hasControlDown()) {
-                    ToastHandler.toggleVisibility(Minecraft.getInstance());
-                }
+        public static void onClientTick(TickEvent.ClientTickEvent.Post event) {
+            while (KEYMAPPING.get().consumeClick() && Screen.hasControlDown()) {
+                ToastHandler.toggleVisibility(Minecraft.getInstance());
             }
         }
     }

@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public interface IPacketHandler {
 
-    public static final IPacketHandler INSTANCE = WhatDidIJustKill.load(IPacketHandler.class);
+    IPacketHandler INSTANCE = WhatDidIJustKill.load(IPacketHandler.class);
 
     void sendPacketEntityKilledByPlayer(ServerPlayer player, ClientBoundEntityKilledPacket packet);
 

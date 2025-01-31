@@ -27,4 +27,4 @@ showAsResourcePack = false
     type = "required"
     versionRange = "${version_range}"
     ordering = "NONE"
-side = "BOTH"
+    side = "BOTH"

@@ -18,7 +18,6 @@ public class FabricWhatDidIJustKillCommand {
         LiteralArgumentBuilder<FabricClientCommandSource> command = literal(WhatDidIJustKill.MOD_ID)
                 .then(literal("config")
                         .then(literal("reload").executes(FabricWhatDidIJustKillCommand::configReload))
-                        .then(literal("show").executes(FabricWhatDidIJustKillCommand::configShow))
                         .then(literal("reset").executes(FabricWhatDidIJustKillCommand::configReset)))
                 .then(literal("github").executes(FabricWhatDidIJustKillCommand::github))
                 .then(literal("issue").executes(FabricWhatDidIJustKillCommand::issue))
@@ -34,12 +33,6 @@ public class FabricWhatDidIJustKillCommand {
         FabricClientCommandSource source = context.getSource();
         boolean success = ConfigManager.reloadConfig();
         FabricResponseHelper.sendMessageConfigReload(source, success);
-        return 1;
-    }
-
-    private static int configShow(CommandContext<FabricClientCommandSource> context) {
-        FabricClientCommandSource source = context.getSource();
-        FabricResponseHelper.sendMessageConfigShow(source);
         return 1;
     }
 

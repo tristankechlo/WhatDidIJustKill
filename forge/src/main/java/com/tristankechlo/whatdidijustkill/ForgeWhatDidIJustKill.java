@@ -12,6 +12,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(WhatDidIJustKill.MOD_ID)
 public class ForgeWhatDidIJustKill {
 
+    @SuppressWarnings("removal") // only in 1.21.1+
     public ForgeWhatDidIJustKill() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);

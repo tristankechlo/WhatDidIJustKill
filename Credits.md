@@ -14,6 +14,6 @@ a list of all translations, their translators, and the modversion they are creat
 
 | Language  |    last updated    | Translator                                                 |
 |:---------:|:------------------:|:-----------------------------------------------------------|
-| **en_us** |   1.1.4 (always)   | tristankechlo ([GitHub](https://github.com/tristankechlo)) |
-| **de_de** |   1.1.4 (always)   | tristankechlo ([GitHub](https://github.com/tristankechlo)) |
+| **en_us** |   1.1.5 (always)   | tristankechlo ([GitHub](https://github.com/tristankechlo)) |
+| **de_de** |   1.1.5 (always)   | tristankechlo ([GitHub](https://github.com/tristankechlo)) |
 | **zh_cn** | 1.1.4 (31.01.2025) | NumberSir ([GitHub](https://github.com/NumberSir))         |

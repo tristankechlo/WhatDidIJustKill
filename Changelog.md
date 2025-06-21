@@ -1,5 +1,10 @@
 # Changelog
 
+### Version 1.21.6 - 1.1.5
+
+- port to 1.21.6
+- add texture for happy ghasts
+
 ### Version 1.21.4 - 1.1.4
 
 - remove command option to open the config file

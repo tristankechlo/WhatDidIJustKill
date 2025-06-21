@@ -4,9 +4,8 @@ import com.google.auto.service.AutoService;
 import com.tristankechlo.whatdidijustkill.WhatDidIJustKill;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.network.CustomPayloadEvent;
-import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.network.ChannelBuilder;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.PacketDistributor;
@@ -42,10 +41,10 @@ public class ForgePacketHandler implements IPacketHandler {
     }
 
     private static void handleEntityKilled(ClientBoundEntityKilledPacket packet, CustomPayloadEvent.Context context) {
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+        if (FMLEnvironment.dist.isClient()) {
             // handle packet only when on client main thread
             ClientBoundEntityKilledPacket.handle(packet);
-        });
+        }
     }
 
     @Override
@@ -54,10 +53,11 @@ public class ForgePacketHandler implements IPacketHandler {
     }
 
     private static void handlePlayerKilled(ClientBoundPlayerKilledPacket packet, CustomPayloadEvent.Context context) {
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+        if (FMLEnvironment.dist.isClient()) {
             // handle packet only when on client main thread
             ClientBoundPlayerKilledPacket.handle(packet);
-        });
+        }
+        ;
     }
 
 }

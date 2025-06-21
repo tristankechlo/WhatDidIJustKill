@@ -14,7 +14,7 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.common.util.Lazy;
 import org.lwjgl.glfw.GLFW;
 
-@EventBusSubscriber(modid = WhatDidIJustKill.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = WhatDidIJustKill.MOD_ID, value = Dist.CLIENT)
 public class NeoforgeWhatDidIJustKillClient {
 
     public static final Lazy<KeyMapping> KEYMAPPING = Lazy.of(() -> new KeyMapping("key.whatdidijustkill.toggle_toasts", GLFW.GLFW_KEY_V, "key.categories.wdijk"));
@@ -29,7 +29,7 @@ public class NeoforgeWhatDidIJustKillClient {
         event.register(KEYMAPPING.get());
     }
 
-    @EventBusSubscriber(modid = WhatDidIJustKill.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
+    @EventBusSubscriber(modid = WhatDidIJustKill.MOD_ID, value = Dist.CLIENT)
     private static class ClientTick {
 
         @SubscribeEvent

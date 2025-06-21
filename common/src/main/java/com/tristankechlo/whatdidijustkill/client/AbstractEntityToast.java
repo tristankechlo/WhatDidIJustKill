@@ -5,7 +5,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastManager;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -43,17 +43,17 @@ public abstract class AbstractEntityToast implements Toast {
     @Override
     public void render(GuiGraphics graphics, Font font, long displayTime) {
         // render background texture
-        graphics.blitSprite(RenderType::guiTextured, this.backgroundTexture, 0, 0, this.width(), this.height());
+        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.backgroundTexture, 0, 0, this.width(), this.height());
 
         // draw entity texture
         this.renderEntityImage(graphics);
 
         // draw text
         if (this.secondLine != null) {
-            graphics.drawString(font, this.secondLine, 30, 17, 16777215, this.textShadow);
+            graphics.drawString(font, this.secondLine, 30, 17, 0xFFFFFFFF, this.textShadow);
         }
         int y = this.secondLine == null ? 12 : 7;
-        graphics.drawString(font, this.firstLine, 30, y, 16777215, this.textShadow);
+        graphics.drawString(font, this.firstLine, 30, y, 0xFFFFFFFF, this.textShadow);
     }
 
     protected abstract void renderEntityImage(GuiGraphics graphics);

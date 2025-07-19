@@ -57,7 +57,6 @@ public class ForgePacketHandler implements IPacketHandler {
             // handle packet only when on client main thread
             ClientBoundPlayerKilledPacket.handle(packet);
         }
-        ;
     }
 
 }

@@ -6,7 +6,7 @@ import com.tristankechlo.whatdidijustkill.config.types.FormatOption;
 import com.tristankechlo.whatdidijustkill.config.types.ToastTheme;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -33,7 +33,7 @@ public class EntityKilledToast extends AbstractEntityToast {
     @Override
     protected void renderEntityImage(GuiGraphics graphics) {
         // TODO allow textures with different sizes
-        graphics.blit(RenderPipelines.GUI_TEXTURED, this.entityTexture, 8, 8, 0, 0, 16, 16, 16, 16);
+        graphics.blit(RenderType::guiTextured, this.entityTexture, 8, 8, 0, 0, 16, 16, 16, 16);
     }
 
     public static EntityKilledToast make(Component entityName, ResourceLocation entityType, double distance) {

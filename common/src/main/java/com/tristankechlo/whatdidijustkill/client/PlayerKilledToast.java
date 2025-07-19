@@ -8,7 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -35,12 +35,12 @@ public class PlayerKilledToast extends AbstractEntityToast {
     @Override
     protected void renderEntityImage(GuiGraphics graphics) {
         if (this.playerTexture == UNKNOWN_PLAYER) {
-            graphics.blit(RenderPipelines.GUI_TEXTURED, this.playerTexture, 8, 8, 0, 0, 16, 16, 16, 16);
+            graphics.blit(RenderType::guiTextured, this.playerTexture, 8, 8, 0, 0, 16, 16, 16, 16);
         } else {
-            graphics.pose().pushMatrix();
-            graphics.pose().scale(2, 2);
-            graphics.blit(RenderPipelines.GUI_TEXTURED, this.playerTexture, 4, 4, 8, 8, 8, 8, 64, 64);
-            graphics.pose().popMatrix();
+            graphics.pose().pushPose();
+            graphics.pose().scale(2, 2, 2);
+            graphics.blit(RenderType::guiTextured, this.playerTexture, 4, 4, 8, 8, 8, 8, 64, 64);
+            graphics.pose().popPose();
         }
     }
 

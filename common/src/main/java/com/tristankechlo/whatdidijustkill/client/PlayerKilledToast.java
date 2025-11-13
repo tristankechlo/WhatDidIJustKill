@@ -69,7 +69,7 @@ public class PlayerKilledToast extends AbstractEntityToast {
         }
         Player player = level.getPlayerByUUID(uuid);
         if (player instanceof AbstractClientPlayer p) {
-            return p.getSkin().texture();
+            return p.getSkin().body().texturePath();
         }
         return UNKNOWN_PLAYER;
     }

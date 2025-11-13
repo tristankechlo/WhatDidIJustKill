@@ -1,5 +1,6 @@
 package com.tristankechlo.whatdidijustkill;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.tristankechlo.whatdidijustkill.client.ToastHandler;
 import com.tristankechlo.whatdidijustkill.config.ConfigManager;
 import com.tristankechlo.whatdidijustkill.fabric_command.FabricWhatDidIJustKillCommand;
@@ -14,6 +15,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.resources.ResourceLocation;
 import org.lwjgl.glfw.GLFW;
 
 public class FabricWhatDidIJustKillClient implements ClientModInitializer {
@@ -25,7 +27,7 @@ public class FabricWhatDidIJustKillClient implements ClientModInitializer {
         ConfigManager.loadAndVerifyConfig();
 
         // register keybindings and listener
-        KEYMAPPING = KeyBindingHelper.registerKeyBinding(new KeyMapping("key.whatdidijustkill.toggle_toasts", GLFW.GLFW_KEY_V, "key.categories.wdijk"));
+        KEYMAPPING = KeyBindingHelper.registerKeyBinding(new KeyMapping("key.whatdidijustkill.toggle_toasts", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_V, WhatDidIJustKill.KEY_CATEGORY));
         ClientTickEvents.END_CLIENT_TICK.register(FabricWhatDidIJustKillClient::keyBindingListener);
 
         // register packet listener
@@ -39,7 +41,7 @@ public class FabricWhatDidIJustKillClient implements ClientModInitializer {
     }
 
     private static void keyBindingListener(Minecraft client) {
-        while (KEYMAPPING.consumeClick() && Screen.hasControlDown()) {
+        while (KEYMAPPING.consumeClick() && client.hasControlDown()) {
             ToastHandler.toggleVisibility(client);
         }
     }

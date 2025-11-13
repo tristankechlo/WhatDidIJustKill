@@ -2,7 +2,7 @@
     "screen.whatdidijustkill.killed": "Killed %s",
     "screen.whatdidijustkill.killed.distance": "Killed %s (%sm)",
     "screen.whatdidijustkill.distance": "Distance: %sm",
-    "key.categories.wdijk": "What Did I Just Kill",
+    "key.category.whatdidijustkill.main": "What Did I Just Kill",
     "key.whatdidijustkill.toggle_toasts": "Toggle Toasts (needs Ctrl)",
     "key.whatdidijustkill.toggle_toasts.enabled": "All toasts are now enabled",
     "key.whatdidijustkill.toggle_toasts.disabled": "All toasts are now disabled"

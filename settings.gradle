@@ -10,8 +10,8 @@ pluginManagement {
                 }
             }
             filter {
-                includeGroup("net.fabricmc")
-                includeGroup("fabric-loom")
+                includeGroupAndSubgroups("net.fabricmc")
+                includeGroupAndSubgroups("fabric-loom")
             }
         }
         exclusiveContent {
@@ -22,7 +22,7 @@ pluginManagement {
                 }
             }
             filter {
-                includeGroup("net.minecraftforge.gradle")
+                includeGroupAndSubgroups("net.minecraftforge.gradle")
             }
         }
         exclusiveContent {

@@ -3,6 +3,11 @@
 ## Version 1.21.11 - 1.1.7
 
 - port to 1.21.11
+- added textures for
+  - parched
+  - nautilus, zombie nautilus
+  - zombie horse
+  - camel husk
 
 ## Version 1.21.10 - 1.1.6
 

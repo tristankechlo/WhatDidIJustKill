@@ -2,7 +2,7 @@ package com.tristankechlo.whatdidijustkill.network;
 
 import com.google.auto.service.AutoService;
 import com.tristankechlo.whatdidijustkill.WhatDidIJustKill;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.network.CustomPayloadEvent;
 import net.minecraftforge.fml.loading.FMLEnvironment;
@@ -14,7 +14,7 @@ import net.minecraftforge.network.SimpleChannel;
 @AutoService(IPacketHandler.class)
 public class ForgePacketHandler implements IPacketHandler {
 
-    private static final SimpleChannel INSTANCE = ChannelBuilder.named(ResourceLocation.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "main"))
+    private static final SimpleChannel INSTANCE = ChannelBuilder.named(Identifier.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "main"))
             .networkProtocolVersion(1)
             .clientAcceptedVersions((s, i) -> true)
             .serverAcceptedVersions((s, i) -> true)

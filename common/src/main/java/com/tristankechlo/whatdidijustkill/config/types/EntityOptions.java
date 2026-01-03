@@ -5,16 +5,16 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.tristankechlo.whatdidijustkill.IPlatformHelper;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.StringRepresentable;
 
 import java.util.List;
 import java.util.Optional;
 
 public record EntityOptions(ShowToastOption showToast, int timeout, FormatOption firstLine, FormatOption secondLine,
-                            ToastTheme theme, List<Either<ResourceLocation, ModWildcard>> excludes) {
+                            ToastTheme theme, List<Either<Identifier, ModWildcard>> excludes) {
 
-    public static final EntityOptions DEFAULT = new EntityOptions(ShowToastOption.NOT_EXCLUDED, 2000, FormatOption.KILLED_DISTANCE, FormatOption.ENTITY_TYPE, ToastTheme.ADVANCEMENT, List.of(Either.left(ResourceLocation.withDefaultNamespace("bat"))));
+    public static final EntityOptions DEFAULT = new EntityOptions(ShowToastOption.NOT_EXCLUDED, 2000, FormatOption.KILLED_DISTANCE, FormatOption.ENTITY_TYPE, ToastTheme.ADVANCEMENT, List.of(Either.left(Identifier.withDefaultNamespace("bat"))));
 
     public static final Codec<EntityOptions> CODEC = RecordCodecBuilder.<EntityOptions>create(
             instance -> instance.group(
@@ -23,7 +23,7 @@ public record EntityOptions(ShowToastOption showToast, int timeout, FormatOption
                     FormatOption.CODEC.fieldOf("first_line").forGetter(EntityOptions::firstLine),
                     FormatOption.CODEC.fieldOf("second_line").forGetter(EntityOptions::secondLine),
                     ToastTheme.CODEC.fieldOf("theme").forGetter(EntityOptions::theme),
-                    Codec.either(ResourceLocation.CODEC, ModWildcard.CODEC).listOf().fieldOf("excludes").forGetter(EntityOptions::excludes)
+                    Codec.either(Identifier.CODEC, ModWildcard.CODEC).listOf().fieldOf("excludes").forGetter(EntityOptions::excludes)
             ).apply(instance, EntityOptions::new)
     ).validate(EntityOptions::verify);
 
@@ -34,14 +34,14 @@ public record EntityOptions(ShowToastOption showToast, int timeout, FormatOption
         return DataResult.success(options);
     }
 
-    public boolean isEntityExcluded(ResourceLocation entityType) {
-        for (Either<ResourceLocation, ModWildcard> element : excludes()) {
+    public boolean isEntityExcluded(Identifier entityType) {
+        for (Either<Identifier, ModWildcard> element : excludes()) {
             Optional<ModWildcard> wildcard = element.right();
             if (wildcard.isPresent() && wildcard.get().modid().equalsIgnoreCase(entityType.getNamespace())) {
                 return true;
             }
 
-            Optional<ResourceLocation> string = element.left();
+            Optional<Identifier> string = element.left();
             if (string.isPresent() && string.get().equals(entityType)) {
                 return true;
             }

@@ -3,7 +3,7 @@ package com.tristankechlo.whatdidijustkill.config.types;
 import com.mojang.serialization.Codec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.StringRepresentable;
 
 public enum FormatOption implements StringRepresentable {
@@ -35,7 +35,7 @@ public enum FormatOption implements StringRepresentable {
         this.formatter = formatter;
     }
 
-    public MutableComponent makeLine(ToastTheme theme, Component entityName, ResourceLocation entityType, double distance) {
+    public MutableComponent makeLine(ToastTheme theme, Component entityName, Identifier entityType, double distance) {
         return this.formatter.format(theme, entityName, entityType, distance);
     }
 
@@ -47,7 +47,7 @@ public enum FormatOption implements StringRepresentable {
     @FunctionalInterface
     private interface LineFormatter {
 
-        MutableComponent format(ToastTheme theme, Component entityName, ResourceLocation entityType, double distance);
+        MutableComponent format(ToastTheme theme, Component entityName, Identifier entityType, double distance);
 
     }
 

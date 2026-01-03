@@ -8,7 +8,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.settings.KeyConflictContext;
-import net.minecraftforge.client.settings.KeyModifier;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
@@ -24,7 +23,8 @@ public class ForgeWhatDidIJustKillClient {
             KeyConflictContext.IN_GAME,
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_V,
-            WhatDidIJustKill.KEY_CATEGORY
+            WhatDidIJustKill.KEY_CATEGORY,
+            0 // ordering
     ));
 
     @SubscribeEvent

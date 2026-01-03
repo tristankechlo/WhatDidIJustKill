@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -21,10 +21,10 @@ import java.util.UUID;
 
 public class PlayerKilledToast extends AbstractEntityToast {
 
-    private static final ResourceLocation UNKNOWN_PLAYER = ResourceLocation.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "textures/player.png");
-    private final ResourceLocation playerTexture;
+    private static final Identifier UNKNOWN_PLAYER = Identifier.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "textures/player.png");
+    private final Identifier playerTexture;
 
-    private PlayerKilledToast(Component firstLine, Component secondLine, ResourceLocation texture) {
+    private PlayerKilledToast(Component firstLine, Component secondLine, Identifier texture) {
         super(firstLine, secondLine);
         this.playerTexture = texture;
         this.displayTime = WhatDidIJustKillConfig.get().player().timeout();
@@ -51,8 +51,8 @@ public class PlayerKilledToast extends AbstractEntityToast {
             entityName = entityName.copy().withStyle(theme.getColorHighlight());
         }
         distance = ((double) Mth.floor(distance * 10)) / 10.0D;
-        ResourceLocation entityType = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.PLAYER);
-        ResourceLocation texture = getTextureLocation(uuid);
+        Identifier entityType = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.PLAYER);
+        Identifier texture = getTextureLocation(uuid);
 
         FormatOption firstLineFormat = WhatDidIJustKillConfig.get().player().firstLine();
         FormatOption secondLineFormat = WhatDidIJustKillConfig.get().player().secondLine();
@@ -62,7 +62,7 @@ public class PlayerKilledToast extends AbstractEntityToast {
         return new PlayerKilledToast(firstLine, secondLine, texture);
     }
 
-    private static ResourceLocation getTextureLocation(UUID uuid) {
+    private static Identifier getTextureLocation(UUID uuid) {
         ClientLevel level = Minecraft.getInstance().level;
         if (level == null) {
             return UNKNOWN_PLAYER;

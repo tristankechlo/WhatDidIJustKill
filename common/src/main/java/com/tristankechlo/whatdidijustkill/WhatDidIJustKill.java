@@ -1,7 +1,7 @@
 package com.tristankechlo.whatdidijustkill;
 
 import net.minecraft.client.KeyMapping;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,8 +27,8 @@ public class WhatDidIJustKill {
         return loadedService;
     }
 
-    public static final ResourceLocation ENTITY_KILLED = ResourceLocation.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "entity_killed");
-    public static final ResourceLocation PLAYER_KILLED = ResourceLocation.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "player_killed");
-    public static final KeyMapping.Category KEY_CATEGORY = new KeyMapping.Category(ResourceLocation.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "main"));
+    public static final Identifier ENTITY_KILLED = Identifier.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "entity_killed");
+    public static final Identifier PLAYER_KILLED = Identifier.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "player_killed");
+    public static final KeyMapping.Category KEY_CATEGORY = new KeyMapping.Category(Identifier.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "main"));
 
 }

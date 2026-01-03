@@ -2,23 +2,23 @@ package com.tristankechlo.whatdidijustkill.config.types;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.ChatFormatting;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.StringRepresentable;
 
 public enum ToastTheme implements StringRepresentable {
 
-    ADVANCEMENT("ADVANCEMENT", ResourceLocation.withDefaultNamespace("toast/advancement"), ChatFormatting.GRAY, ChatFormatting.DARK_GRAY, ChatFormatting.WHITE),
-    RECIPE("RECIPE", ResourceLocation.withDefaultNamespace("toast/recipe"), ChatFormatting.BLACK, ChatFormatting.DARK_GRAY, ChatFormatting.DARK_GRAY),
-    TUTORIAL("TUTORIAL", ResourceLocation.withDefaultNamespace("toast/tutorial"), ChatFormatting.BLACK, ChatFormatting.DARK_GRAY, ChatFormatting.DARK_GRAY);
+    ADVANCEMENT("ADVANCEMENT", Identifier.withDefaultNamespace("toast/advancement"), ChatFormatting.GRAY, ChatFormatting.DARK_GRAY, ChatFormatting.WHITE),
+    RECIPE("RECIPE", Identifier.withDefaultNamespace("toast/recipe"), ChatFormatting.BLACK, ChatFormatting.DARK_GRAY, ChatFormatting.DARK_GRAY),
+    TUTORIAL("TUTORIAL", Identifier.withDefaultNamespace("toast/tutorial"), ChatFormatting.BLACK, ChatFormatting.DARK_GRAY, ChatFormatting.DARK_GRAY);
 
     public static final Codec<ToastTheme> CODEC = StringRepresentable.fromEnum(ToastTheme::values);
     private final String key;
-    private final ResourceLocation background;
+    private final Identifier background;
     private final ChatFormatting colorText; // color to use for most of the text
     private final ChatFormatting colorEntityType; // color to use when rendering the entity_type
     private final ChatFormatting colorHighlight; // color to use for highlighting the entity name
 
-    ToastTheme(String key, ResourceLocation background, ChatFormatting colorText, ChatFormatting colorEntityType, ChatFormatting colorHighlight) {
+    ToastTheme(String key, Identifier background, ChatFormatting colorText, ChatFormatting colorEntityType, ChatFormatting colorHighlight) {
         this.key = key;
         this.background = background;
         this.colorText = colorText;
@@ -26,7 +26,7 @@ public enum ToastTheme implements StringRepresentable {
         this.colorHighlight = colorHighlight;
     }
 
-    public ResourceLocation getBackgroundTexture() {
+    public Identifier getBackgroundTexture() {
         return background;
     }
 

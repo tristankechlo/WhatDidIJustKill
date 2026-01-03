@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -19,10 +19,10 @@ import java.util.Optional;
 
 public class EntityKilledToast extends AbstractEntityToast {
 
-    private static final ResourceLocation UNKNOWN_ENTITY = ResourceLocation.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "textures/entity_unknown.png");
-    private final ResourceLocation entityTexture;
+    private static final Identifier UNKNOWN_ENTITY = Identifier.fromNamespaceAndPath(WhatDidIJustKill.MOD_ID, "textures/entity_unknown.png");
+    private final Identifier entityTexture;
 
-    private EntityKilledToast(Component firstLine, Component secondLine, ResourceLocation entityType) {
+    private EntityKilledToast(Component firstLine, Component secondLine, Identifier entityType) {
         super(firstLine, secondLine);
         this.entityTexture = getTextureLocationSafe(entityType);
         this.displayTime = WhatDidIJustKillConfig.get().entity().timeout();
@@ -36,7 +36,7 @@ public class EntityKilledToast extends AbstractEntityToast {
         graphics.blit(RenderPipelines.GUI_TEXTURED, this.entityTexture, 8, 8, 0, 0, 16, 16, 16, 16);
     }
 
-    public static EntityKilledToast make(Component entityName, ResourceLocation entityType, double distance) {
+    public static EntityKilledToast make(Component entityName, Identifier entityType, double distance) {
         ToastTheme theme = WhatDidIJustKillConfig.get().entity().theme();
 
         if (entityName.getStyle().getColor() == null) {
@@ -52,8 +52,8 @@ public class EntityKilledToast extends AbstractEntityToast {
         return new EntityKilledToast(firstLine, secondLine, entityType);
     }
 
-    private static ResourceLocation getTextureLocationSafe(ResourceLocation entityType) {
-        ResourceLocation expectedLocation = makeExpectedLocation(entityType);
+    private static Identifier getTextureLocationSafe(Identifier entityType) {
+        Identifier expectedLocation = makeExpectedLocation(entityType);
         Optional<Resource> resource = Minecraft.getInstance().getResourceManager().getResource(expectedLocation);
         if (resource.isEmpty()) {
             WhatDidIJustKill.LOGGER.warn("Did not find icon for '{}' at '{}' using fallback icon.", entityType, expectedLocation);
@@ -63,11 +63,11 @@ public class EntityKilledToast extends AbstractEntityToast {
         }
     }
 
-    private static ResourceLocation makeExpectedLocation(ResourceLocation entityType) {
+    private static Identifier makeExpectedLocation(Identifier entityType) {
         EntityType<?> type = BuiltInRegistries.ENTITY_TYPE.get(entityType).orElseThrow().value();
         String category = type.getCategory().getName().toLowerCase();
         String path = String.format("textures/entity_icon/%s/%s.png", category, entityType.getPath());
-        return ResourceLocation.fromNamespaceAndPath(entityType.getNamespace(), path);
+        return Identifier.fromNamespaceAndPath(entityType.getNamespace(), path);
     }
 
 }

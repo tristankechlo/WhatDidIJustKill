@@ -7,13 +7,13 @@ import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastManager;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public abstract class AbstractEntityToast implements Toast {
 
     private final Component firstLine; // not null
     private final Component secondLine; // might be null
-    protected ResourceLocation backgroundTexture = ToastTheme.ADVANCEMENT.getBackgroundTexture();
+    protected Identifier backgroundTexture = ToastTheme.ADVANCEMENT.getBackgroundTexture();
     protected int displayTime = 2000;
     protected boolean textShadow = true;
     private Toast.Visibility wantedVisibility = Visibility.HIDE;

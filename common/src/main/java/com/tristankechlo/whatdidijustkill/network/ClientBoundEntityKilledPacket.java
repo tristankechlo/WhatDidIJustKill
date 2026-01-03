@@ -7,9 +7,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentSerialization;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
-public record ClientBoundEntityKilledPacket(Component entityName, ResourceLocation entityType, double distance, boolean hasSpecialName) implements CustomPacketPayload {
+public record ClientBoundEntityKilledPacket(Component entityName, Identifier entityType, double distance, boolean hasSpecialName) implements CustomPacketPayload {
 
     public static final Type<ClientBoundEntityKilledPacket> TYPE = new Type<>(WhatDidIJustKill.ENTITY_KILLED);
     public static final StreamCodec<RegistryFriendlyByteBuf, ClientBoundEntityKilledPacket> CODEC = StreamCodec.of(
@@ -19,14 +19,14 @@ public record ClientBoundEntityKilledPacket(Component entityName, ResourceLocati
 
     public static void encode(RegistryFriendlyByteBuf buffer, ClientBoundEntityKilledPacket packet) {
         ComponentSerialization.STREAM_CODEC.encode(buffer, packet.entityName());
-        buffer.writeResourceLocation(packet.entityType());
+        buffer.writeIdentifier(packet.entityType());
         buffer.writeDouble(packet.distance());
         buffer.writeBoolean(packet.hasSpecialName());
     }
 
     public static ClientBoundEntityKilledPacket decode(RegistryFriendlyByteBuf buffer) {
         Component entityName = ComponentSerialization.STREAM_CODEC.decode(buffer);
-        ResourceLocation entityType = buffer.readResourceLocation();
+        Identifier entityType = buffer.readIdentifier();
         double distance = buffer.readDouble();
         boolean hasCustomName = buffer.readBoolean();
         return new ClientBoundEntityKilledPacket(entityName, entityType, distance, hasCustomName);
@@ -38,7 +38,8 @@ public record ClientBoundEntityKilledPacket(Component entityName, ResourceLocati
     }
 
     @Override
-    public Type<? extends CustomPacketPayload> type() {
+    public Type<ClientBoundEntityKilledPacket> type() {
         return TYPE;
     }
+
 }

@@ -8,7 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.toasts.ToastManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.UUID;
 
@@ -26,7 +26,7 @@ public class ToastHandler {
         instance.options.save();
     }
 
-    public static void showToastEntity(Component entityName, ResourceLocation entityType, double distance, boolean hasSpecialName) {
+    public static void showToastEntity(Component entityName, Identifier entityType, double distance, boolean hasSpecialName) {
         if (!toastsEnabled || WhatDidIJustKillConfig.get().entity().showToast() == EntityOptions.ShowToastOption.NONE) {
             return;
         }

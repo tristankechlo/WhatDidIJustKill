@@ -1,55 +1,59 @@
 # Changelog
 
-### Version 1.21.10 - 1.1.6
+## Version 1.21.11 - 1.1.7
+
+- port to 1.21.11
+
+## Version 1.21.10 - 1.1.6
 
 - port to 1.21.10
 - add texture for copper golem
 
-### Version 1.21.8 - 1.1.5
+## Version 1.21.8 - 1.1.5
 
 - port to 1.21.8
 
-### Version 1.21.7 - 1.1.5
+## Version 1.21.7 - 1.1.5
 
 - port to 1.21.7
 
-### Version 1.21.6 - 1.1.5
+## Version 1.21.6 - 1.1.5
 
 - port to 1.21.6
 - add texture for happy ghasts
 
-### Version 1.21.4 - 1.1.4
+## Version 1.21.4 - 1.1.4
 
 - remove command option to open the config file
 - add translation `zh_cn` by NumberSir [GitHub](https://github.com/NumberSir)
 
-### Version 1.21.4 - 1.1.3
+## Version 1.21.4 - 1.1.3
 
 - port to 1.21.4
 
-### Version 1.21.3 - 1.1.3
+## Version 1.21.3 - 1.1.3
 
 - port to 1.21.3
 - add textures for creakings
 - fix forge crashing on startup
 
-### Version 1.21.1 - 1.1.2
+## Version 1.21.1 - 1.1.2
 
 - port to 1.21.1
 
-### Version 1.20.6 - 1.1.2
+## Version 1.20.6 - 1.1.2
 
 - port to 1.20.6
 - add proper icon for fabric mod menu
 
-### Version 1.20.4 - 1.1.1
+## Version 1.20.4 - 1.1.1
 
 - use kill credit to determine who killed the mob/player
     - toast now shows when enemy died in lava while fighting
     - also shows toast when enemy dies to fall damage while fighting
 - fix incorrect scaling on player toast
 
-### Version 1.20.4 - 1.1.0
+## Version 1.20.4 - 1.1.0
 
 - allow different styles as toasts
     - adjustable through the config, different styles for entity and player possible
@@ -60,6 +64,6 @@
     - default is CTRL+V
     - configurable through the key bindings
 
-### Version 1.20.4 - 1.0.0
+## Version 1.20.4 - 1.0.0
 
 - initial release
